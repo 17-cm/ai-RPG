@@ -2,21 +2,9 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <!--
-      viewport-fit=cover        让页面延伸到刘海/圆角区域，配合 CSS env(safe-area-inset-*) 使用
-      user-scalable=no          游戏界面禁止双击/捏合缩放
-      interactive-widget=resizes-content  Android Chrome 键盘弹出时压缩布局视口而非遮挡
-    -->
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content"
-    />
+    <!-- 自适应关闭版：只留最小 viewport 声明，其余浏览器默认行为 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#10141c" />
-    <!-- PWA：加到主屏后全屏运行，浏览器地址栏/工具栏彻底消失（学自 ai-virtual-phone） -->
-    <link rel="manifest" href="/manifest.webmanifest" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>AI-RPG</title>
   </head>
   <body>

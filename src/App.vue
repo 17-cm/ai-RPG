@@ -1,19 +1,18 @@
 <script setup>
 /**
- * 手机自适应游戏壳：顶栏(状态) / 故事区(滚动) / 输入坞(键盘感知)。
- * 玩法内核仍是 sendMessage() → /api/chat → 模型。
+ * 自适应关闭版（基线对照）：
+ * 不引入 use-mobile-viewport，不做任何视口/键盘干预。
+ * 整页自然滚动；点输入框弹键盘时，由浏览器自己把输入框滚进视野。
+ * 诊断角标保留（仅 dev 可见），方便对比浏览器给的原始数值。
  */
 import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
-import { useMobileViewport } from './use-mobile-viewport'
 
 const messages = ref([]) // {role: 'user'|'assistant', content}
 const input = ref('')
 const busy = ref(false)
 const error = ref('')
-const listEl = ref(null)
 const inputEl = ref(null)
 
-/* ---- 开发期视口诊断角标（生产构建自动移除） ---- */
 const isDev = import.meta.env.DEV
 const vp = ref('')
 function updateBadge() {
@@ -21,23 +20,16 @@ function updateBadge() {
   const vv = window.visualViewport
   const ua = navigator.userAgent
   const kernel = /Edg\//.test(ua) ? 'Edge' : /OPR\//.test(ua) ? 'Opera' : /Firefox|FxiOS/.test(ua) ? 'Firefox' : /MicroMessenger/.test(ua) ? '微信' : /Quark/.test(ua) ? '夸克' : /UCBrowser/.test(ua) ? 'UC' : /Chrome|CriOS/.test(ua) ? 'Chrome' : /Safari/.test(ua) ? 'Safari' : '?'
-  const lift = getComputedStyle(document.documentElement).getPropertyValue('--mobile-keyboard-lift').trim() || '0'
   vp.value =
-    `视口 ${window.innerWidth}×${window.innerHeight} | 可视 ${vv ? Math.round(vv.width) + '×' + Math.round(vv.height) : '?'} | 抬升 ${lift} | ` +
+    `视口 ${window.innerWidth}×${window.innerHeight} | 可视 ${vv ? Math.round(vv.width) + '×' + Math.round(vv.height) : '?'} | ` +
     `屏 ${screen.width}×${screen.height} dpr${devicePixelRatio} ${kernel}` +
     (window.innerWidth > 800 && screen.width < 600 ? ' ⚠桌面模式' : '')
 }
-
-/* ---- 手机视口/键盘自适应（移植自 ai-virtual-phone 实战方案） ---- */
-const mvp = useMobileViewport(() => {
-  updateBadge()
-  scrollToBottom()
-})
 onMounted(() => {
-  mvp.mount()
   updateBadge()
+  window.addEventListener('resize', updateBadge)
 })
-onBeforeUnmount(() => mvp.unmount())
+onBeforeUnmount(() => window.removeEventListener('resize', updateBadge))
 
 /* ---- 游戏循环 ---- */
 async function sendMessage() {
@@ -51,7 +43,6 @@ async function sendMessage() {
   await scrollToBottom()
 
   try {
-    // 线上由 Vercel/Netlify 函数接住；本地由 Vite 代理转给 dev-server
     const res = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -65,13 +56,12 @@ async function sendMessage() {
   } finally {
     busy.value = false
     await scrollToBottom()
-    inputEl.value?.focus() // 手机键盘保持不收起
   }
 }
 
 async function scrollToBottom() {
   await nextTick()
-  if (listEl.value) listEl.value.scrollTop = listEl.value.scrollHeight
+  window.scrollTo(0, document.documentElement.scrollHeight)
 }
 </script>
 
@@ -87,10 +77,10 @@ async function scrollToBottom() {
     </div>
   </header>
 
-  <main ref="listEl" class="stage">
+  <main class="stage">
     <p v-if="messages.length === 0" class="dim placeholder">
       冒险尚未开始。<br />
-      <small>（在 .env 填入 OPENAI_API_KEY 后，输入任意内容即可开始）</small>
+      <small>（当前为"自适应关闭"基线版：整页默认滚动，无任何视口干预）</small>
     </p>
     <div v-for="(m, i) in messages" :key="i" :class="['msg', m.role]">
       <span class="who">{{ m.role === 'user' ? '你' : '旁白' }}</span>
@@ -121,7 +111,7 @@ async function scrollToBottom() {
 /* ---- 视口诊断角标（仅 dev） ---- */
 .vpbadge {
   position: fixed;
-  top: calc(var(--sat, 0px) + 4px);
+  top: 4px;
   right: 8px;
   z-index: 99;
   font-size: 10px;
@@ -141,6 +131,7 @@ async function scrollToBottom() {
   justify-content: space-between;
   gap: 8px;
   user-select: none;
+  padding-top: 14px; /* 给固定角标让位 */
 }
 .brand {
   font-size: 16px;
@@ -160,17 +151,13 @@ async function scrollToBottom() {
   white-space: nowrap;
 }
 
-/* ---- 故事区（唯一可滚动区域） ---- */
+/* ---- 故事区：自然文档流，整页滚动 ---- */
 .stage {
-  flex: 1;
-  min-height: 0; /* flex 子项可滚动的关键 */
-  overflow-y: auto;
-  overscroll-behavior: contain; /* 滚到边界不带动页面 */
-  -webkit-overflow-scrolling: touch;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 4px 0;
+  padding: 12px 0;
+  min-height: 40vh;
 }
 .placeholder {
   margin-top: 15vh;
@@ -186,10 +173,10 @@ async function scrollToBottom() {
   padding: 9px 12px;
   border-radius: 12px;
   line-height: 1.65;
-  font-size: clamp(14px, 3.9vw, 16px); /* 小屏不挤、大屏不糊 */
+  font-size: clamp(14px, 3.9vw, 16px);
   white-space: pre-wrap;
   word-break: break-word;
-  user-select: text; /* 剧情允许长按复制 */
+  user-select: text;
 }
 .msg.user {
   align-self: flex-end;
@@ -214,21 +201,21 @@ async function scrollToBottom() {
   user-select: text;
 }
 
-/* ---- 输入坞 ---- */
+/* ---- 输入区：普通文档流，不固定不悬浮 ---- */
 .dock {
   display: flex;
   gap: 8px;
-  padding-top: 2px;
+  padding-bottom: 12px;
 }
 .dock input {
   flex: 1;
-  min-height: 46px; /* ≥44px 触控标准 */
+  min-height: 46px;
   padding: 10px 14px;
   border-radius: 10px;
   border: 1px solid var(--line);
   background: var(--panel);
   color: var(--text);
-  font-size: 16px; /* iOS：<16px 聚焦会自动放大页面 */
+  font-size: 16px;
   outline: none;
 }
 .dock input:focus {
