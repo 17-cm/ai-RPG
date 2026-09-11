@@ -1,11 +1,10 @@
 <script setup>
 /**
- * 自适应关闭版（基线对照）：
- * 不引入 use-mobile-viewport，不做任何视口/键盘干预。
- * 整页自然滚动；点输入框弹键盘时，由浏览器自己把输入框滚进视野。
- * 诊断角标保留（仅 dev 可见），方便对比浏览器给的原始数值。
+ * 游戏壳 v3：自然滚动 + fixed 钉底输入坞 + 键盘最小抬升（附加层）。
+ * 玩法内核 sendMessage() → /api/chat → 模型。
  */
 import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
+import { useMobileViewport } from './use-mobile-viewport'
 
 const messages = ref([]) // {role: 'user'|'assistant', content}
 const input = ref('')
@@ -13,6 +12,7 @@ const busy = ref(false)
 const error = ref('')
 const inputEl = ref(null)
 
+/* ---- 开发期视口诊断角标（生产构建自动移除） ---- */
 const isDev = import.meta.env.DEV
 const vp = ref('')
 function updateBadge() {
@@ -20,16 +20,20 @@ function updateBadge() {
   const vv = window.visualViewport
   const ua = navigator.userAgent
   const kernel = /Edg\//.test(ua) ? 'Edge' : /OPR\//.test(ua) ? 'Opera' : /Firefox|FxiOS/.test(ua) ? 'Firefox' : /MicroMessenger/.test(ua) ? '微信' : /Quark/.test(ua) ? '夸克' : /UCBrowser/.test(ua) ? 'UC' : /Chrome|CriOS/.test(ua) ? 'Chrome' : /Safari/.test(ua) ? 'Safari' : '?'
+  const lift = getComputedStyle(document.documentElement).getPropertyValue('--mobile-keyboard-lift').trim() || '0'
   vp.value =
-    `视口 ${window.innerWidth}×${window.innerHeight} | 可视 ${vv ? Math.round(vv.width) + '×' + Math.round(vv.height) : '?'} | ` +
+    `视口 ${window.innerWidth}×${window.innerHeight} | 可视 ${vv ? Math.round(vv.width) + '×' + Math.round(vv.height) : '?'} | 抬 ${lift} | ` +
     `屏 ${screen.width}×${screen.height} dpr${devicePixelRatio} ${kernel}` +
     (window.innerWidth > 800 && screen.width < 600 ? ' ⚠桌面模式' : '')
 }
+
+/* ---- 手机视口/键盘适配（ai-virtual-phone 方案；纯附加层，坏了也不影响钉底） ---- */
+const mvp = useMobileViewport(updateBadge)
 onMounted(() => {
+  mvp.mount()
   updateBadge()
-  window.addEventListener('resize', updateBadge)
 })
-onBeforeUnmount(() => window.removeEventListener('resize', updateBadge))
+onBeforeUnmount(() => mvp.unmount())
 
 /* ---- 游戏循环 ---- */
 async function sendMessage() {
@@ -56,6 +60,7 @@ async function sendMessage() {
   } finally {
     busy.value = false
     await scrollToBottom()
+    inputEl.value?.focus()
   }
 }
 
@@ -80,7 +85,7 @@ async function scrollToBottom() {
   <main class="stage">
     <p v-if="messages.length === 0" class="dim placeholder">
       冒险尚未开始。<br />
-      <small>（当前为"自适应关闭"基线版：整页默认滚动，无任何视口干预）</small>
+      <small>（输入框已用 fixed 钉死屏幕底部，与页面高度无关）</small>
     </p>
     <div v-for="(m, i) in messages" :key="i" :class="['msg', m.role]">
       <span class="who">{{ m.role === 'user' ? '你' : '旁白' }}</span>
@@ -91,19 +96,20 @@ async function scrollToBottom() {
     </div>
   </main>
 
-  <p v-if="error" class="error">⚠ {{ error }}</p>
-
   <footer class="dock">
-    <input
-      ref="inputEl"
-      v-model="input"
-      :disabled="busy"
-      placeholder="你要做什么？"
-      enterkeyhint="send"
-      autocomplete="off"
-      @keydown.enter.prevent="sendMessage"
-    />
-    <button :disabled="busy || !input.trim()" @click="sendMessage">发送</button>
+    <p v-if="error" class="error">⚠ {{ error }}</p>
+    <div class="dockrow">
+      <input
+        ref="inputEl"
+        v-model="input"
+        :disabled="busy"
+        placeholder="你要做什么？"
+        enterkeyhint="send"
+        autocomplete="off"
+        @keydown.enter.prevent="sendMessage"
+      />
+      <button :disabled="busy || !input.trim()" @click="sendMessage">发送</button>
+    </div>
   </footer>
 </template>
 
@@ -118,7 +124,7 @@ async function scrollToBottom() {
   line-height: 1.4;
   padding: 3px 8px;
   border-radius: 6px;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.7);
   color: #ffd76a;
   pointer-events: none;
   max-width: 60vw;
@@ -131,7 +137,7 @@ async function scrollToBottom() {
   justify-content: space-between;
   gap: 8px;
   user-select: none;
-  padding-top: 14px; /* 给固定角标让位 */
+  padding-top: 16px; /* 给角标让位 */
 }
 .brand {
   font-size: 16px;
@@ -157,10 +163,10 @@ async function scrollToBottom() {
   flex-direction: column;
   gap: 10px;
   padding: 12px 0;
-  min-height: 40vh;
+  min-height: 45vh;
 }
 .placeholder {
-  margin-top: 15vh;
+  margin-top: 18vh;
   text-align: center;
   line-height: 2;
 }
@@ -194,18 +200,34 @@ async function scrollToBottom() {
   color: var(--dim);
   margin-bottom: 2px;
 }
+
+/* ---- 输入坞：fixed 钉屏幕底（本方案的主角，不依赖任何高度计算） ---- */
+.dock {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 8px 12px calc(env(safe-area-inset-bottom, 0px) + 8px);
+  background: linear-gradient(transparent, var(--bg) 22%);
+
+  /* 键盘最小抬升直接作用在 dock 上（use-mobile-viewport 写入变量）。
+     transform 加在 fixed 元素自身不影响其钉底语义，只改变绘制位置。 */
+  transform: translate3d(0, calc(-1 * var(--mobile-keyboard-lift, 0px)), 0);
+  transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.dockrow {
+  display: flex;
+  gap: 8px;
+}
 .error {
   color: #ff8f8f;
   font-size: 13px;
-  margin: 0 2px;
+  margin: 0 2px 6px;
   user-select: text;
-}
-
-/* ---- 输入区：普通文档流，不固定不悬浮 ---- */
-.dock {
-  display: flex;
-  gap: 8px;
-  padding-bottom: 12px;
 }
 .dock input {
   flex: 1;
@@ -215,7 +237,7 @@ async function scrollToBottom() {
   border: 1px solid var(--line);
   background: var(--panel);
   color: var(--text);
-  font-size: 16px;
+  font-size: 16px; /* iOS <16px 聚焦会放大页面 */
   outline: none;
 }
 .dock input:focus {

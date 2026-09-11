@@ -1,6 +1,6 @@
-/* ============ 自适应关闭版（基线对照） ============
-   无安全区、无 --screen-h、无键盘抬升、无 overflow 锁定。
-   整页走浏览器默认滚动。 */
+/* ============ 全局基础：自然滚动 + fixed 钉底 ============
+   页面不再锁高度、不再锁滚动（那是上一版翻车嫌疑点）。
+   输入坞用 position:fixed 直接钉屏幕底，与内容高度无关。 */
 :root {
   color-scheme: dark;
   --bg: #10141c;
@@ -11,12 +11,19 @@
   --accent: #4f8cff;
   --user: #2a3550;
   --ai: #1f2937;
+
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+
+  /* 输入坞占位高度（内容区据此留底距） */
+  --dock-h: 62px;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
   background: var(--bg);
@@ -28,5 +35,9 @@ body {
 #app {
   max-width: 520px;
   margin: 0 auto;
-  padding: 12px;
+  padding: calc(var(--sat) + 10px) 12px calc(var(--sab) + var(--dock-h) + 16px);
+  min-height: 100vh;
+  min-height: 100dvh; /* 支持则用，不支持也无妨：fixed 不依赖它 */
+  /* 注意：这里绝不能加 transform——祖先带 transform 会变成 fixed 元素的
+     包含块，输入坞就不再钉屏幕而是钉文档流了。键盘抬升直接作用在 .dock 上。 */
 }
