@@ -1,31 +1,62 @@
-/* 深色游戏风基础样式，随便改 */
+/* ============ 手机优先 · 全局自适应基础 ============ */
 :root {
   color-scheme: dark;
   --bg: #10141c;
   --panel: #1a2130;
+  --line: #2c3648;
   --text: #e6e9f0;
   --dim: #8b94a7;
   --accent: #4f8cff;
   --user: #2a3550;
   --ai: #1f2937;
+
+  /* 真实可视高度：App.vue 里用 visualViewport 实时写入，
+     键盘弹出/iOS 地址栏收起都跟着变，输入栏永不被挡 */
+  --screen-h: 100dvh;
+
+  /* 安全区（刘海、圆角、底部横条） */
+  --sat: env(safe-area-inset-top, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
 }
 
 * {
   box-sizing: border-box;
 }
 
+html,
 body {
+  height: 100%;
   margin: 0;
+  overflow: hidden; /* 整页不滚动，只有故事区自己滚 */
+  overscroll-behavior: none; /* 禁下拉刷新/回弹 */
+}
+
+body {
   background: var(--bg);
   color: var(--text);
   font-family: system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  -webkit-tap-highlight-color: transparent; /* 去点击闪屏 */
+  touch-action: manipulation; /* 去双击缩放 300ms 延迟 */
 }
 
 #app {
-  max-width: 680px;
+  height: var(--screen-h);
+  max-width: 520px; /* 平板/电脑上也保持手机单列，居中 */
   margin: 0 auto;
-  padding: 16px;
-  min-height: 100dvh;
+  padding: calc(var(--sat) + 10px) calc(var(--sar) + 12px) calc(var(--sab) + 10px)
+    calc(var(--sal) + 12px);
   display: flex;
   flex-direction: column;
+  gap: 8px;
+}
+
+/* 横屏矮窗口：压缩留白，把空间让给内容 */
+@media (orientation: landscape) and (max-height: 500px) {
+  #app {
+    padding-top: calc(var(--sat) + 4px);
+    padding-bottom: calc(var(--sab) + 4px);
+    gap: 4px;
+  }
 }

@@ -2,8 +2,17 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI 小游戏</title>
+    <!--
+      viewport-fit=cover        让页面延伸到刘海/圆角区域，配合 CSS env(safe-area-inset-*) 使用
+      user-scalable=no          游戏界面禁止双击/捏合缩放
+      interactive-widget=resizes-content  Android Chrome 键盘弹出时压缩布局视口而非遮挡
+    -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content"
+    />
+    <meta name="theme-color" content="#10141c" />
+    <title>AI-RPG</title>
   </head>
   <body>
     <div id="app"></div>

@@ -1,16 +1,35 @@
 <script setup>
 /**
- * 链路验证 Demo —— 一个最简"玩家输入 → 代理 → 模型 → 回复"循环。
- * 你的游戏 UI 直接替换这个组件即可；请求函数 sendMessage() 的写法可以照搬。
+ * 手机自适应游戏壳：顶栏(状态) / 故事区(滚动) / 输入坞(键盘感知)。
+ * 玩法内核仍是 sendMessage() → /api/chat → 模型。
  */
-import { ref, nextTick } from 'vue'
+import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
 
 const messages = ref([]) // {role: 'user'|'assistant', content}
 const input = ref('')
 const busy = ref(false)
 const error = ref('')
 const listEl = ref(null)
+const inputEl = ref(null)
 
+/* ---- 键盘/视口自适应：把真实可视高度写进 --screen-h ---- */
+function fitViewport() {
+  const h = window.visualViewport ? window.visualViewport.height : window.innerHeight
+  document.documentElement.style.setProperty('--screen-h', `${h}px`)
+  // 视口变化后让故事区停在底部
+  scrollToBottom()
+}
+onMounted(() => {
+  fitViewport()
+  window.visualViewport?.addEventListener('resize', fitViewport)
+  window.addEventListener('orientationchange', fitViewport)
+})
+onBeforeUnmount(() => {
+  window.visualViewport?.removeEventListener('resize', fitViewport)
+  window.removeEventListener('orientationchange', fitViewport)
+})
+
+/* ---- 游戏循环 ---- */
 async function sendMessage() {
   const text = input.value.trim()
   if (!text || busy.value) return
@@ -22,7 +41,7 @@ async function sendMessage() {
   await scrollToBottom()
 
   try {
-    // 生产环境这个请求会被 Vercel/Netlify 的函数接住；本地开发由 Vite 代理转给 dev-server
+    // 线上由 Vercel/Netlify 函数接住；本地由 Vite 代理转给 dev-server
     const res = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -36,6 +55,7 @@ async function sendMessage() {
   } finally {
     busy.value = false
     await scrollToBottom()
+    inputEl.value?.focus() // 手机键盘保持不收起
   }
 }
 
@@ -46,115 +66,158 @@ async function scrollToBottom() {
 </script>
 
 <template>
-  <header class="bar">
-    <h1>🎮 AI 小游戏 · 骨架已就位</h1>
-    <p class="dim">下面是一个最小验证循环：发一句话，能收到模型回复就说明"前端→代理→模型"全通了。</p>
+  <header class="topbar">
+    <div class="brand">🎮 AI-RPG</div>
+    <div class="stats">
+      <span class="chip">Lv.1</span>
+      <span class="chip">❤ 100</span>
+      <span class="chip">🪙 0</span>
+    </div>
   </header>
 
-  <main ref="listEl" class="chat">
+  <main ref="listEl" class="stage">
     <p v-if="messages.length === 0" class="dim placeholder">
-      还没有对话。先在项目根目录建 <code>.env</code> 填入 <code>OPENAI_API_KEY</code>（见 README），
-      然后在下方输入内容试试。
+      冒险尚未开始。<br />
+      <small>（在 .env 填入 OPENAI_API_KEY 后，输入任意内容即可开始）</small>
     </p>
     <div v-for="(m, i) in messages" :key="i" :class="['msg', m.role]">
-      <span class="who">{{ m.role === 'user' ? '你' : 'AI' }}</span>
+      <span class="who">{{ m.role === 'user' ? '你' : '旁白' }}</span>
       <span class="content">{{ m.content }}</span>
     </div>
-    <div v-if="busy" class="msg assistant"><span class="who">AI</span><span class="content dim">思考中…</span></div>
+    <div v-if="busy" class="msg assistant">
+      <span class="who">旁白</span><span class="content dim">思考中…</span>
+    </div>
   </main>
 
   <p v-if="error" class="error">⚠ {{ error }}</p>
 
-  <footer class="inputbar">
+  <footer class="dock">
     <input
+      ref="inputEl"
       v-model="input"
       :disabled="busy"
-      placeholder="输入内容，回车发送"
-      @keydown.enter="sendMessage"
+      placeholder="你要做什么？"
+      enterkeyhint="send"
+      autocomplete="off"
+      @keydown.enter.prevent="sendMessage"
     />
     <button :disabled="busy || !input.trim()" @click="sendMessage">发送</button>
   </footer>
 </template>
 
 <style scoped>
-.bar h1 {
-  font-size: 18px;
-  margin: 4px 0;
+/* ---- 顶栏 ---- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  user-select: none;
+}
+.brand {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.stats {
+  display: flex;
+  gap: 6px;
+}
+.chip {
+  font-size: 12px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+/* ---- 故事区（唯一可滚动区域） ---- */
+.stage {
+  flex: 1;
+  min-height: 0; /* flex 子项可滚动的关键 */
+  overflow-y: auto;
+  overscroll-behavior: contain; /* 滚到边界不带动页面 */
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 0;
+}
+.placeholder {
+  margin-top: 15vh;
+  text-align: center;
+  line-height: 2;
 }
 .dim {
   color: var(--dim);
   font-size: 13px;
 }
-.bar p {
-  margin: 4px 0 12px;
-}
-.chat {
-  flex: 1;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 8px 0;
-}
-.placeholder {
-  margin-top: 40px;
-  text-align: center;
-}
 .msg {
-  max-width: 85%;
-  padding: 8px 12px;
-  border-radius: 10px;
-  line-height: 1.6;
-  font-size: 15px;
+  max-width: 86%;
+  padding: 9px 12px;
+  border-radius: 12px;
+  line-height: 1.65;
+  font-size: clamp(14px, 3.9vw, 16px); /* 小屏不挤、大屏不糊 */
   white-space: pre-wrap;
   word-break: break-word;
+  user-select: text; /* 剧情允许长按复制 */
 }
 .msg.user {
   align-self: flex-end;
   background: var(--user);
+  border-bottom-right-radius: 4px;
 }
 .msg.assistant {
   align-self: flex-start;
   background: var(--ai);
+  border-bottom-left-radius: 4px;
 }
 .who {
+  display: block;
   font-size: 11px;
   color: var(--dim);
-  margin-right: 8px;
+  margin-bottom: 2px;
 }
 .error {
   color: #ff8f8f;
   font-size: 13px;
-  margin: 6px 2px;
+  margin: 0 2px;
+  user-select: text;
 }
-.inputbar {
+
+/* ---- 输入坞 ---- */
+.dock {
   display: flex;
   gap: 8px;
-  padding-top: 10px;
+  padding-top: 2px;
 }
-.inputbar input {
+.dock input {
   flex: 1;
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid #2c3648;
+  min-height: 46px; /* ≥44px 触控标准 */
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
   background: var(--panel);
   color: var(--text);
-  font-size: 15px;
+  font-size: 16px; /* iOS：<16px 聚焦会自动放大页面 */
   outline: none;
 }
-.inputbar input:focus {
+.dock input:focus {
   border-color: var(--accent);
 }
-.inputbar button {
-  padding: 10px 18px;
-  border-radius: 8px;
+.dock button {
+  min-height: 46px;
+  min-width: 68px;
+  padding: 10px 16px;
+  border-radius: 10px;
   border: none;
   background: var(--accent);
   color: #fff;
   font-size: 15px;
   cursor: pointer;
 }
-.inputbar button:disabled {
+.dock button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
