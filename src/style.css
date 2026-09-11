@@ -42,7 +42,14 @@ body {
 }
 
 #app {
-  height: var(--screen-h);
+  /* 高度回退链：100vh(老内核) → 100dvh(现代) → --screen-h(JS 实时 px，最终生效) */
+  height: 100vh;
+  height: 100dvh;
+  height: var(--screen-h, 100dvh);
+  /* 键盘最小抬升层：由 use-mobile-viewport 写入，transform 不动布局 */
+  transform: translate3d(0, calc(-1 * var(--mobile-keyboard-lift, 0px)), 0);
+  transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
   max-width: 520px; /* 平板/电脑上也保持手机单列，居中 */
   margin: 0 auto;
   padding: calc(var(--sat) + 10px) calc(var(--sar) + 12px) calc(var(--sab) + 10px)

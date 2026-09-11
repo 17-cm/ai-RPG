@@ -4,6 +4,7 @@
  * 玩法内核仍是 sendMessage() → /api/chat → 模型。
  */
 import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
+import { useMobileViewport } from './use-mobile-viewport'
 
 const messages = ref([]) // {role: 'user'|'assistant', content}
 const input = ref('')
@@ -16,32 +17,27 @@ const inputEl = ref(null)
 const isDev = import.meta.env.DEV
 const vp = ref('')
 function updateBadge() {
+  if (!isDev) return
   const vv = window.visualViewport
   const ua = navigator.userAgent
   const kernel = /Edg\//.test(ua) ? 'Edge' : /OPR\//.test(ua) ? 'Opera' : /Firefox|FxiOS/.test(ua) ? 'Firefox' : /MicroMessenger/.test(ua) ? '微信' : /Quark/.test(ua) ? '夸克' : /UCBrowser/.test(ua) ? 'UC' : /Chrome|CriOS/.test(ua) ? 'Chrome' : /Safari/.test(ua) ? 'Safari' : '?'
+  const lift = getComputedStyle(document.documentElement).getPropertyValue('--mobile-keyboard-lift').trim() || '0'
   vp.value =
-    `页面视口 ${window.innerWidth}×${window.innerHeight} | 可视 ${vv ? Math.round(vv.width) + '×' + Math.round(vv.height) : '?'} | ` +
-    `屏幕 ${screen.width}×${screen.height} dpr${devicePixelRatio} | ${kernel}` +
-    (window.innerWidth > 800 && screen.width < 600 ? ' ⚠桌面模式(meta未生效)' : '')
+    `视口 ${window.innerWidth}×${window.innerHeight} | 可视 ${vv ? Math.round(vv.width) + '×' + Math.round(vv.height) : '?'} | 抬升 ${lift} | ` +
+    `屏 ${screen.width}×${screen.height} dpr${devicePixelRatio} ${kernel}` +
+    (window.innerWidth > 800 && screen.width < 600 ? ' ⚠桌面模式' : '')
 }
 
-/* ---- 键盘/视口自适应：把真实可视高度写进 --screen-h ---- */
-function fitViewport() {
-  const h = window.visualViewport ? window.visualViewport.height : window.innerHeight
-  document.documentElement.style.setProperty('--screen-h', `${h}px`)
+/* ---- 手机视口/键盘自适应（移植自 ai-virtual-phone 实战方案） ---- */
+const mvp = useMobileViewport(() => {
   updateBadge()
-  // 视口变化后让故事区停在底部
   scrollToBottom()
-}
+})
 onMounted(() => {
-  fitViewport()
-  window.visualViewport?.addEventListener('resize', fitViewport)
-  window.addEventListener('orientationchange', fitViewport)
+  mvp.mount()
+  updateBadge()
 })
-onBeforeUnmount(() => {
-  window.visualViewport?.removeEventListener('resize', fitViewport)
-  window.removeEventListener('orientationchange', fitViewport)
-})
+onBeforeUnmount(() => mvp.unmount())
 
 /* ---- 游戏循环 ---- */
 async function sendMessage() {
