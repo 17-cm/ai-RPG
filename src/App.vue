@@ -12,10 +12,24 @@ const error = ref('')
 const listEl = ref(null)
 const inputEl = ref(null)
 
+/* ---- 开发期视口诊断角标（生产构建自动移除） ---- */
+const isDev = import.meta.env.DEV
+const vp = ref('')
+function updateBadge() {
+  const vv = window.visualViewport
+  const ua = navigator.userAgent
+  const kernel = /Edg\//.test(ua) ? 'Edge' : /OPR\//.test(ua) ? 'Opera' : /Firefox|FxiOS/.test(ua) ? 'Firefox' : /MicroMessenger/.test(ua) ? '微信' : /Quark/.test(ua) ? '夸克' : /UCBrowser/.test(ua) ? 'UC' : /Chrome|CriOS/.test(ua) ? 'Chrome' : /Safari/.test(ua) ? 'Safari' : '?'
+  vp.value =
+    `页面视口 ${window.innerWidth}×${window.innerHeight} | 可视 ${vv ? Math.round(vv.width) + '×' + Math.round(vv.height) : '?'} | ` +
+    `屏幕 ${screen.width}×${screen.height} dpr${devicePixelRatio} | ${kernel}` +
+    (window.innerWidth > 800 && screen.width < 600 ? ' ⚠桌面模式(meta未生效)' : '')
+}
+
 /* ---- 键盘/视口自适应：把真实可视高度写进 --screen-h ---- */
 function fitViewport() {
   const h = window.visualViewport ? window.visualViewport.height : window.innerHeight
   document.documentElement.style.setProperty('--screen-h', `${h}px`)
+  updateBadge()
   // 视口变化后让故事区停在底部
   scrollToBottom()
 }
@@ -66,6 +80,8 @@ async function scrollToBottom() {
 </script>
 
 <template>
+  <div v-if="isDev" class="vpbadge">{{ vp }}</div>
+
   <header class="topbar">
     <div class="brand">🎮 AI-RPG</div>
     <div class="stats">
@@ -106,6 +122,22 @@ async function scrollToBottom() {
 </template>
 
 <style scoped>
+/* ---- 视口诊断角标（仅 dev） ---- */
+.vpbadge {
+  position: fixed;
+  top: calc(var(--sat, 0px) + 4px);
+  right: 8px;
+  z-index: 99;
+  font-size: 10px;
+  line-height: 1.4;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #ffd76a;
+  pointer-events: none;
+  max-width: 60vw;
+}
+
 /* ---- 顶栏 ---- */
 .topbar {
   display: flex;
