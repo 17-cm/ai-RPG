@@ -1,1 +1,161 @@
-PHNjcmlwdCBzZXR1cD4KLyoqCiAqIOmTvui3r+mqjOivgSBEZW1vIOKAlOKAlCDkuIDkuKrmnIDnroAi546p5a626L6T5YWlIOKGkiDku6PnkIYg4oaSIOaooeWeiyDihpIg5Zue5aSNIuW+queOr+OAggogKiDkvaDnmoTmuLjmiI8gVUkg55u05o6l5pu/5o2i6L+Z5Liq57uE5Lu25Y2z5Y+v77yb6K+35rGC5Ye95pWwIHNlbmRNZXNzYWdlKCkg55qE5YaZ5rOV5Y+v5Lul54Wn5pCs44CCCiAqLwppbXBvcnQgeyByZWYsIG5leHRUaWNrIH0gZnJvbSAndnVlJwoKY29uc3QgbWVzc2FnZXMgPSByZWYoW10pIC8vIHtyb2xlOiAndXNlcid8J2Fzc2lzdGFudCcsIGNvbnRlbnR9CmNvbnN0IGlucHV0ID0gcmVmKCcnKQpjb25zdCBidXN5ID0gcmVmKGZhbHNlKQpjb25zdCBlcnJvciA9IHJlZignJykKY29uc3QgbGlzdEVsID0gcmVmKG51bGwpCgphc3luYyBmdW5jdGlvbiBzZW5kTWVzc2FnZSgpIHsKICBjb25zdCB0ZXh0ID0gaW5wdXQudmFsdWUudHJpbSgpCiAgaWYgKCF0ZXh0IHx8IGJ1c3kudmFsdWUpIHJldHVybgoKICBpbnB1dC52YWx1ZSA9ICcnCiAgZXJyb3IudmFsdWUgPSAnJwogIG1lc3NhZ2VzLnZhbHVlLnB1c2goeyByb2xlOiAndXNlcicsIGNvbnRlbnQ6IHRleHQgfSkKICBidXN5LnZhbHVlID0gdHJ1ZQogIGF3YWl0IHNjcm9sbFRvQm90dG9tKCkKCiAgdHJ5IHsKICAgIC8vIOeUn+S6p+eOr+Wig+i/meS4quivt+axguS8muiiqyBWZXJjZWwvTmV0bGlmeSDnmoTlh73mlbDmjqXkvY/vvJvmnKzlnLDlvIDlj5HnlLEgVml0ZSDku6PnkIbovaznu5kgZGV2LXNlcnZlcgogICAgY29uc3QgcmVzID0gYXdhaXQgZmV0Y2goJy9hcGkvY2hhdCcsIHsKICAgICAgbWV0aG9kOiAnUE9TVCcsCiAgICAgIGhlYWRlcnM6IHsgJ0NvbnRlbnQtVHlwZSc6ICdhcHBsaWNhdGlvbi9qc29uJyB9LAogICAgICBib2R5OiBKU09OLnN0cmluZ2lmeSh7IG1lc3NhZ2VzOiBtZXNzYWdlcy52YWx1ZSB9KSwKICAgIH0pCiAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzLmpzb24oKQogICAgaWYgKCFyZXMub2spIHRocm93IG5ldyBFcnJvcihkYXRhLmVycm9yIHx8IGBIVFRQICR7cmVzLnN0YXR1c31gKQogICAgbWVzc2FnZXMudmFsdWUucHVzaCh7IHJvbGU6ICdhc3Npc3RhbnQnLCBjb250ZW50OiBkYXRhLnJlcGx5IH0pCiAgfSBjYXRjaCAoZSkgewogICAgZXJyb3IudmFsdWUgPSBlLm1lc3NhZ2UKICB9IGZpbmFsbHkgewogICAgYnVzeS52YWx1ZSA9IGZhbHNlCiAgICBhd2FpdCBzY3JvbGxUb0JvdHRvbSgpCiAgfQp9Cgphc3luYyBmdW5jdGlvbiBzY3JvbGxUb0JvdHRvbSgpIHsKICBhd2FpdCBuZXh0VGljaygpCiAgaWYgKGxpc3RFbC52YWx1ZSkgbGlzdEVsLnZhbHVlLnNjcm9sbFRvcCA9IGxpc3RFbC52YWx1ZS5zY3JvbGxIZWlnaHQKfQo8L3NjcmlwdD4KCjx0ZW1wbGF0ZT4KICA8aGVhZGVyIGNsYXNzPSJiYXIiPgogICAgPGgxPvCfjq4gQUkg5bCP5ri45oiPIMK3IOmqqOaetuW3suWwseS9jTwvaDE+CiAgICA8cCBjbGFzcz0iZGltIj7kuIvpnaLmmK/kuIDkuKrmnIDlsI/pqozor4Hlvqrnjq/vvJrlj5HkuIDlj6Xor53vvIzog73mlLbliLDmqKHlnovlm57lpI3lsLHor7TmmI4i5YmN56uv4oaS5Luj55CG4oaS5qih5Z6LIuWFqOmAmuS6huOAgjwvcD4KICA8L2hlYWRlcj4KCiAgPG1haW4gcmVmPSJsaXN0RWwiIGNsYXNzPSJjaGF0Ij4KICAgIDxwIHYtaWY9Im1lc3NhZ2VzLmxlbmd0aCA9PT0gMCIgY2xhc3M9ImRpbSBwbGFjZWhvbGRlciI+CiAgICAgIOi/mOayoeacieWvueivneOAguWFiOWcqOmhueebruagueebruW9leW7uiA8Y29kZT4uZW52PC9jb2RlPiDloavlhaUgPGNvZGU+T1BFTkFJX0FQSV9LRVk8L2NvZGU+77yI6KeBIFJFQURNRe+8ie+8jAogICAgICDnhLblkI7lnKjkuIvmlrnovpPlhaXlhoXlrrnor5Xor5XjgIIKICAgIDwvcD4KICAgIDxkaXYgdi1mb3I9IihtLCBpKSBpbiBtZXNzYWdlcyIgOmtleT0iaSIgOmNsYXNzPSJbJ21zZycsIG0ucm9sZV0iPgogICAgICA8c3BhbiBjbGFzcz0id2hvIj57eyBtLnJvbGUgPT09ICd1c2VyJyA/ICfkvaAnIDogJ0FJJyB9fTwvc3Bhbj4KICAgICAgPHNwYW4gY2xhc3M9ImNvbnRlbnQiPnt7IG0uY29udGVudCB9fTwvc3Bhbj4KICAgIDwvZGl2PgogICAgPGRpdiB2LWlmPSJidXN5IiBjbGFzcz0ibXNnIGFzc2lzdGFudCI+PHNwYW4gY2xhc3M9IndobyI+QUk8L3NwYW4+PHNwYW4gY2xhc3M9ImNvbnRlbnQgZGltIj7mgJ3ogIPkuK3igKY8L3NwYW4+PC9kaXY+CiAgPC9tYWluPgoKICA8cCB2LWlmPSJlcnJvciIgY2xhc3M9ImVycm9yIj7imqAge3sgZXJyb3IgfX08L3A+CgogIDxmb290ZXIgY2xhc3M9ImlucHV0YmFyIj4KICAgIDxpbnB1dAogICAgICB2LW1vZGVsPSJpbnB1dCIKICAgICAgOmRpc2FibGVkPSJidXN5IgogICAgICBwbGFjZWhvbGRlcj0i6L6T5YWl5YaF5a6577yM5Zue6L2m5Y+R6YCBIgogICAgICBAa2V5ZG93bi5lbnRlcj0ic2VuZE1lc3NhZ2UiCiAgICAvPgogICAgPGJ1dHRvbiA6ZGlzYWJsZWQ9ImJ1c3kgfHwgIWlucHV0LnRyaW0oKSIgQGNsaWNrPSJzZW5kTWVzc2FnZSI+5Y+R6YCBPC9idXR0b24+CiAgPC9mb290ZXI+CjwvdGVtcGxhdGU+Cgo8c3R5bGUgc2NvcGVkPgouYmFyIGgxIHsKICBmb250LXNpemU6IDE4cHg7CiAgbWFyZ2luOiA0cHggMDsKfQouZGltIHsKICBjb2xvcjogdmFyKC0tZGltKTsKICBmb250LXNpemU6IDEzcHg7Cn0KLmJhciBwIHsKICBtYXJnaW46IDRweCAwIDEycHg7Cn0KLmNoYXQgewogIGZsZXg6IDE7CiAgb3ZlcmZsb3cteTogYXV0bzsKICBkaXNwbGF5OiBmbGV4OwogIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47CiAgZ2FwOiA4cHg7CiAgcGFkZGluZzogOHB4IDA7Cn0KLnBsYWNlaG9sZGVyIHsKICBtYXJnaW4tdG9wOiA0MHB4OwogIHRleHQtYWxpZ246IGNlbnRlcjsKfQoubXNnIHsKICBtYXgtd2lkdGg6IDg1JTsKICBwYWRkaW5nOiA4cHggMTJweDsKICBib3JkZXItcmFkaXVzOiAxMHB4OwogIGxpbmUtaGVpZ2h0OiAxLjY7CiAgZm9udC1zaXplOiAxNXB4OwogIHdoaXRlLXNwYWNlOiBwcmUtd3JhcDsKICB3b3JkLWJyZWFrOiBicmVhay13b3JkOwp9Ci5tc2cudXNlciB7CiAgYWxpZ24tc2VsZjogZmxleC1lbmQ7CiAgYmFja2dyb3VuZDogdmFyKC0tdXNlcik7Cn0KLm1zZy5hc3Npc3RhbnQgewogIGFsaWduLXNlbGY6IGZsZXgtc3RhcnQ7CiAgYmFja2dyb3VuZDogdmFyKC0tYWkpOwp9Ci53aG8gewogIGZvbnQtc2l6ZTogMTFweDsKICBjb2xvcjogdmFyKC0tZGltKTsKICBtYXJnaW4tcmlnaHQ6IDhweDsKfQouZXJyb3IgewogIGNvbG9yOiAjZmY4ZjhmOwogIGZvbnQtc2l6ZTogMTNweDsKICBtYXJnaW46IDZweCAycHg7Cn0KLmlucHV0YmFyIHsKICBkaXNwbGF5OiBmbGV4OwogIGdhcDogOHB4OwogIHBhZGRpbmctdG9wOiAxMHB4Owp9Ci5pbnB1dGJhciBpbnB1dCB7CiAgZmxleDogMTsKICBwYWRkaW5nOiAxMHB4IDEycHg7CiAgYm9yZGVyLXJhZGl1czogOHB4OwogIGJvcmRlcjogMXB4IHNvbGlkICMyYzM2NDg7CiAgYmFja2dyb3VuZDogdmFyKC0tcGFuZWwpOwogIGNvbG9yOiB2YXIoLS10ZXh0KTsKICBmb250LXNpemU6IDE1cHg7CiAgb3V0bGluZTogbm9uZTsKfQouaW5wdXRiYXIgaW5wdXQ6Zm9jdXMgewogIGJvcmRlci1jb2xvcjogdmFyKC0tYWNjZW50KTsKfQouaW5wdXRiYXIgYnV0dG9uIHsKICBwYWRkaW5nOiAxMHB4IDE4cHg7CiAgYm9yZGVyLXJhZGl1czogOHB4OwogIGJvcmRlcjogbm9uZTsKICBiYWNrZ3JvdW5kOiB2YXIoLS1hY2NlbnQpOwogIGNvbG9yOiAjZmZmOwogIGZvbnQtc2l6ZTogMTVweDsKICBjdXJzb3I6IHBvaW50ZXI7Cn0KLmlucHV0YmFyIGJ1dHRvbjpkaXNhYmxlZCB7CiAgb3BhY2l0eTogMC40OwogIGN1cnNvcjogbm90LWFsbG93ZWQ7Cn0KPC9zdHlsZT4K
+<script setup>
+/**
+ * 链路验证 Demo —— 一个最简"玩家输入 → 代理 → 模型 → 回复"循环。
+ * 你的游戏 UI 直接替换这个组件即可；请求函数 sendMessage() 的写法可以照搬。
+ */
+import { ref, nextTick } from 'vue'
+
+const messages = ref([]) // {role: 'user'|'assistant', content}
+const input = ref('')
+const busy = ref(false)
+const error = ref('')
+const listEl = ref(null)
+
+async function sendMessage() {
+  const text = input.value.trim()
+  if (!text || busy.value) return
+
+  input.value = ''
+  error.value = ''
+  messages.value.push({ role: 'user', content: text })
+  busy.value = true
+  await scrollToBottom()
+
+  try {
+    // 生产环境这个请求会被 Vercel/Netlify 的函数接住；本地开发由 Vite 代理转给 dev-server
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: messages.value }),
+    })
+    const data = await res.json()
+    if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`)
+    messages.value.push({ role: 'assistant', content: data.reply })
+  } catch (e) {
+    error.value = e.message
+  } finally {
+    busy.value = false
+    await scrollToBottom()
+  }
+}
+
+async function scrollToBottom() {
+  await nextTick()
+  if (listEl.value) listEl.value.scrollTop = listEl.value.scrollHeight
+}
+</script>
+
+<template>
+  <header class="bar">
+    <h1>🎮 AI 小游戏 · 骨架已就位</h1>
+    <p class="dim">下面是一个最小验证循环：发一句话，能收到模型回复就说明"前端→代理→模型"全通了。</p>
+  </header>
+
+  <main ref="listEl" class="chat">
+    <p v-if="messages.length === 0" class="dim placeholder">
+      还没有对话。先在项目根目录建 <code>.env</code> 填入 <code>OPENAI_API_KEY</code>（见 README），
+      然后在下方输入内容试试。
+    </p>
+    <div v-for="(m, i) in messages" :key="i" :class="['msg', m.role]">
+      <span class="who">{{ m.role === 'user' ? '你' : 'AI' }}</span>
+      <span class="content">{{ m.content }}</span>
+    </div>
+    <div v-if="busy" class="msg assistant"><span class="who">AI</span><span class="content dim">思考中…</span></div>
+  </main>
+
+  <p v-if="error" class="error">⚠ {{ error }}</p>
+
+  <footer class="inputbar">
+    <input
+      v-model="input"
+      :disabled="busy"
+      placeholder="输入内容，回车发送"
+      @keydown.enter="sendMessage"
+    />
+    <button :disabled="busy || !input.trim()" @click="sendMessage">发送</button>
+  </footer>
+</template>
+
+<style scoped>
+.bar h1 {
+  font-size: 18px;
+  margin: 4px 0;
+}
+.dim {
+  color: var(--dim);
+  font-size: 13px;
+}
+.bar p {
+  margin: 4px 0 12px;
+}
+.chat {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 0;
+}
+.placeholder {
+  margin-top: 40px;
+  text-align: center;
+}
+.msg {
+  max-width: 85%;
+  padding: 8px 12px;
+  border-radius: 10px;
+  line-height: 1.6;
+  font-size: 15px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.msg.user {
+  align-self: flex-end;
+  background: var(--user);
+}
+.msg.assistant {
+  align-self: flex-start;
+  background: var(--ai);
+}
+.who {
+  font-size: 11px;
+  color: var(--dim);
+  margin-right: 8px;
+}
+.error {
+  color: #ff8f8f;
+  font-size: 13px;
+  margin: 6px 2px;
+}
+.inputbar {
+  display: flex;
+  gap: 8px;
+  padding-top: 10px;
+}
+.inputbar input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #2c3648;
+  background: var(--panel);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+}
+.inputbar input:focus {
+  border-color: var(--accent);
+}
+.inputbar button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+.inputbar button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+</style>

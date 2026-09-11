@@ -1,1 +1,19 @@
-LyoqCiAqIFZlcmNlbCBTZXJ2ZXJsZXNzIEZ1bmN0aW9uIOWFpeWPowogKiDpg6jnvbLlkI7oh6rliqjmmrTpnLLkuLogUE9TVCAvYXBpL2NoYXTvvIjkuI7liY3nq6/lkIzmupDvvIzml6DpnIDlpITnkIYgQ09SU++8iQogKi8KaW1wb3J0IHsgY2hhdFdpdGhNb2RlbCwgQXBpRXJyb3IgfSBmcm9tICcuLi9zZXJ2ZXIvY2hhdC1jb3JlLmpzJwoKZXhwb3J0IGRlZmF1bHQgYXN5bmMgZnVuY3Rpb24gaGFuZGxlcihyZXEsIHJlcykgewogIGlmIChyZXEubWV0aG9kICE9PSAnUE9TVCcpIHsKICAgIHJldHVybiByZXMuc3RhdHVzKDQwNSkuanNvbih7IGVycm9yOiAn5LuF5pSv5oyBIFBPU1QnIH0pCiAgfQogIHRyeSB7CiAgICBjb25zdCB7IG1lc3NhZ2VzIH0gPSByZXEuYm9keSA/PyB7fQogICAgY29uc3QgcmVzdWx0ID0gYXdhaXQgY2hhdFdpdGhNb2RlbChtZXNzYWdlcykKICAgIHJldHVybiByZXMuc3RhdHVzKDIwMCkuanNvbihyZXN1bHQpCiAgfSBjYXRjaCAoZSkgewogICAgY29uc3Qgc3RhdHVzID0gZSBpbnN0YW5jZW9mIEFwaUVycm9yID8gZS5zdGF0dXMgOiA1MDAKICAgIHJldHVybiByZXMuc3RhdHVzKHN0YXR1cykuanNvbih7IGVycm9yOiBlLm1lc3NhZ2UgfHwgJ+acquefpemUmeivrycgfSkKICB9Cn0K
+/**
+ * Vercel Serverless Function 入口
+ * 部署后自动暴露为 POST /api/chat（与前端同源，无需处理 CORS）
+ */
+import { chatWithModel, ApiError } from '../server/chat-core.js'
+
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: '仅支持 POST' })
+  }
+  try {
+    const { messages } = req.body ?? {}
+    const result = await chatWithModel(messages)
+    return res.status(200).json(result)
+  } catch (e) {
+    const status = e instanceof ApiError ? e.status : 500
+    return res.status(status).json({ error: e.message || '未知错误' })
+  }
+}

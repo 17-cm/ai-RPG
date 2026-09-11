@@ -1,1 +1,5 @@
-ewogICJmcmFtZXdvcmsiOiAidml0ZSIsCiAgImJ1aWxkQ29tbWFuZCI6ICJucG0gcnVuIGJ1aWxkIiwKICAib3V0cHV0RGlyZWN0b3J5IjogImRpc3QiCn0K
+{
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
+}

@@ -1,1 +1,13 @@
-aW1wb3J0IHsgZGVmaW5lQ29uZmlnIH0gZnJvbSAndml0ZScKaW1wb3J0IHZ1ZSBmcm9tICdAdml0ZWpzL3BsdWdpbi12dWUnCgpleHBvcnQgZGVmYXVsdCBkZWZpbmVDb25maWcoewogIHBsdWdpbnM6IFt2dWUoKV0sCiAgc2VydmVyOiB7CiAgICAvLyDmnKzlnLDlvIDlj5Hml7bvvIzliY3nq6/lj5Hlh7rnmoQgL2FwaS8qIOivt+axgui9rOWPkee7mSBkZXYtc2VydmVyLmpz77yI5qih5ouf57q/5LiK5LqR5Ye95pWw77yJCiAgICBwcm94eTogewogICAgICAnL2FwaSc6ICdodHRwOi8vbG9jYWxob3N0Ojg3ODcnLAogICAgfSwKICB9LAp9KQo=
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+export default defineConfig({
+  plugins: [vue()],
+  server: {
+    host: true, // 监听 0.0.0.0，手机浏览器可通过映射端口访问
+    // 本地开发时，前端发出的 /api/* 请求转发给 dev-server.js（模拟线上云函数）
+    proxy: {
+      '/api': 'http://localhost:8787',
+    },
+  },
+})

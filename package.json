@@ -1,1 +1,21 @@
-ewogICJuYW1lIjogImFpLXJwZyIsCiAgInByaXZhdGUiOiB0cnVlLAogICJ2ZXJzaW9uIjogIjAuMS4wIiwKICAidHlwZSI6ICJtb2R1bGUiLAogICJzY3JpcHRzIjogewogICAgImRldiI6ICJub2RlIGRldi5qcyIsCiAgICAiYnVpbGQiOiAidml0ZSBidWlsZCIsCiAgICAicHJldmlldyI6ICJ2aXRlIHByZXZpZXciCiAgfSwKICAiZGVwZW5kZW5jaWVzIjogewogICAgInZ1ZSI6ICJeMy41LjEzIgogIH0sCiAgImRldkRlcGVuZGVuY2llcyI6IHsKICAgICJAdml0ZWpzL3BsdWdpbi12dWUiOiAiXjUuMi4xIiwKICAgICJ2aXRlIjogIl42LjMuNSIKICB9Cn0K
+{
+  "name": "ai-rpg",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node dev.js",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.3.5"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true
+  }
+}

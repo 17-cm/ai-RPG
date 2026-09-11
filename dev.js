@@ -1,1 +1,41 @@
-LyoqCiAqIGRldi5qcyDigJTigJQgbnBtIHJ1biBkZXYg55qE55yf5q2j5YWl5Y+j77ya5LiA5p2h5ZG95Luk5ZCM5pe26LW3CiAqICAgMS4gVml0ZSDliY3nq6/lvIDlj5HmnI3liqHlmajvvIjpu5jorqQgNTE3M++8iQogKiAgIDIuIOacrOWcsCBBUEkg5qih5ouf5pyN5YqhIGRldi1zZXJ2ZXIuanPvvIg4Nzg377yJCiAqIOS7u+S4gOi/m+eoi+mAgOWHui/ooqsgQ3RybCtDIOaXtu+8jOWPpuS4gOS4quS5n+S4gOi1t+aUtuaOieOAggogKi8KaW1wb3J0IHsgc3Bhd24gfSBmcm9tICdub2RlOmNoaWxkX3Byb2Nlc3MnCmltcG9ydCB7IGZpbGVVUkxUb1BhdGggfSBmcm9tICdub2RlOnVybCcKaW1wb3J0IHsgZGlybmFtZSwgam9pbiB9IGZyb20gJ25vZGU6cGF0aCcKCmNvbnN0IHJvb3QgPSBkaXJuYW1lKGZpbGVVUkxUb1BhdGgoaW1wb3J0Lm1ldGEudXJsKSkKY29uc3QgaXNXaW4gPSBwcm9jZXNzLnBsYXRmb3JtID09PSAnd2luMzInCgpjb25zdCBjaGlsZHJlbiA9IFtdCgpmdW5jdGlvbiBydW4obmFtZSwgY21kLCBhcmdzKSB7CiAgY29uc3QgY2hpbGQgPSBzcGF3bihjbWQsIGFyZ3MsIHsgY3dkOiByb290LCBzdGRpbzogJ2luaGVyaXQnLCBzaGVsbDogaXNXaW4gfSkKICBjaGlsZC5vbignZXhpdCcsIChjb2RlKSA9PiB7CiAgICBjb25zb2xlLmxvZyhgW2Rldl0gJHtuYW1lfSDpgIDlh7ogKGNvZGUgJHtjb2RlfSlgKQogICAgc2h1dGRvd24oY29kZSA/PyAwKQogIH0pCiAgY2hpbGRyZW4ucHVzaChjaGlsZCkKfQoKbGV0IHNodXR0aW5nRG93biA9IGZhbHNlCmZ1bmN0aW9uIHNodXRkb3duKGNvZGUpIHsKICBpZiAoc2h1dHRpbmdEb3duKSByZXR1cm4KICBzaHV0dGluZ0Rvd24gPSB0cnVlCiAgZm9yIChjb25zdCBjIG9mIGNoaWxkcmVuKSBjLmtpbGwoJ1NJR0lOVCcpCiAgc2V0VGltZW91dCgoKSA9PiBwcm9jZXNzLmV4aXQoY29kZSksIDMwMCkudW5yZWYoKQp9Cgpwcm9jZXNzLm9uKCdTSUdJTlQnLCAoKSA9PiBzaHV0ZG93bigwKSkKcHJvY2Vzcy5vbignU0lHVEVSTScsICgpID0+IHNodXRkb3duKDApKQoKcnVuKCdhcGknLCBwcm9jZXNzLmV4ZWNQYXRoLCBbCiAgJy0tZW52LWZpbGUtaWYtZXhpc3RzPS5lbnYnLAogICctLWVudi1maWxlLWlmLWV4aXN0cz0uZW52LmxvY2FsJywKICBqb2luKHJvb3QsICdkZXYtc2VydmVyLmpzJyksCl0pCnJ1bignd2ViJywgcHJvY2Vzcy5leGVjUGF0aCwgW2pvaW4ocm9vdCwgJ25vZGVfbW9kdWxlcycsICd2aXRlJywgJ2JpbicsICd2aXRlLmpzJyldKQo=
+/**
+ * dev.js —— npm run dev 的真正入口：一条命令同时起
+ *   1. Vite 前端开发服务器（默认 5173）
+ *   2. 本地 API 模拟服务 dev-server.js（8787）
+ * 任一进程退出/被 Ctrl+C 时，另一个也一起收掉。
+ */
+import { spawn } from 'node:child_process'
+import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
+
+const root = dirname(fileURLToPath(import.meta.url))
+const isWin = process.platform === 'win32'
+
+const children = []
+
+function run(name, cmd, args) {
+  const child = spawn(cmd, args, { cwd: root, stdio: 'inherit', shell: isWin })
+  child.on('exit', (code) => {
+    console.log(`[dev] ${name} 退出 (code ${code})`)
+    shutdown(code ?? 0)
+  })
+  children.push(child)
+}
+
+let shuttingDown = false
+function shutdown(code) {
+  if (shuttingDown) return
+  shuttingDown = true
+  for (const c of children) c.kill('SIGINT')
+  setTimeout(() => process.exit(code), 300).unref()
+}
+
+process.on('SIGINT', () => shutdown(0))
+process.on('SIGTERM', () => shutdown(0))
+
+run('api', process.execPath, [
+  '--env-file-if-exists=.env',
+  '--env-file-if-exists=.env.local',
+  join(root, 'dev-server.js'),
+])
+run('web', process.execPath, [join(root, 'node_modules', 'vite', 'bin', 'vite.js')])

@@ -1,1 +1,74 @@
-IyBhaS1SUEcg4oCU4oCUIEFJIOeOqeazleWGheaguOWwj+a4uOaIj+iEmuaJi+aetgoKVml0ZSArIFZ1ZSAzIOWJjeerr++8jOeOqeazleWGheaguOmAmui/h+S6keWHveaVsOS7o+eQhuiwg+eUqOWkp+aooeWei++8iE9wZW5BSSDlhbzlrrnmoLzlvI/vvIzljoLllYblj6/mjaLvvInjgIIK5LiA5Liq5LuT5bqT5ZCM5pe25pSv5oyBICoqVmVyY2VsKiog5ZKMICoqTmV0bGlmeSoqIOmDqOe9su+8jOacrOWcsOW8gOWPkembtumFjee9ruOAggoKIyMg5p625p6ECgpgYGAK5rWP6KeI5ZmoIChWdWUsIOmdmeaAgeaWh+S7tikKICAg4pSCICBQT1NUIC9hcGkvY2hhdCAgeyBtZXNzYWdlczogWy4uLl0gfQogICDilrwK5Luj55CG5bGC77yI5LiJ5aSE5YWl5Y+j5YWx5LqrIHNlcnZlci9jaGF0LWNvcmUuanMg5ZCM5LiA5Lu96YC76L6R77yJCiAgIOKUnOKUgCDmnKzlnLDlvIDlj5EgICBkZXYtc2VydmVyLmpzICAgICAgICDvvIhucG0gcnVuIGRldiDoh6rliqjotbfvvIkKICAg4pSc4pSAIFZlcmNlbCAgICBhcGkvY2hhdC5qcwogICDilJTilIAgTmV0bGlmeSAgIG5ldGxpZnkvZnVuY3Rpb25zL2NoYXQuanPvvIgvYXBpL2NoYXQg55SxIG5ldGxpZnkudG9tbCDph43lrprlkJHvvIkKICAg4pSCICDluKYgT1BFTkFJX0FQSV9LRVkg6L2s5Y+RCiAgIOKWvArmqKHlnosgQVBJ77yI6buY6K6kIERlZXBTZWVr77yM5pS5546v5aKD5Y+Y6YeP5Y2z5o2i5Y6C5ZWG77yJCmBgYAoKKipBUEkgS2V5IOWPquWtmOWcqOS6juS7o+eQhuWxgueahOeOr+Wig+WPmOmHj+mHjO+8jOawuOi/nOS4jeS8mui/m+WJjeerr+S7o+eggeOAgioqCgojIyDmnKzlnLDlvIDlj5EKCmBgYGJhc2gKbnBtIGluc3RhbGwKY3AgLmVudi5leGFtcGxlIC5lbnYgICAgIyDloavlhaUgT1BFTkFJX0FQSV9LRVkKbnBtIHJ1biBkZXYgICAgICAgICAgICAgIyDlkIzml7botbfliY3nq68oNTE3MykgKyDmnKzlnLBBUEkoODc4NykKYGBgCgrmiZPlvIAgaHR0cDovL2xvY2FsaG9zdDo1MTczIO+8jOWcqOmhtemdoumHjOWPkeS4gOWPpeivne+8jOaUtuWIsCBBSSDlm57lpI0gPSDlhajpk77ot6/miZPpgJrjgIIKCiMjIOmDqOe9su+8iOS7pSBWZXJjZWwg5Li65L6L77yMTmV0bGlmeSDlkIznkIbvvIkKCjEuIOaKiuacrOebruW9leaOqOWIsCBHaXRIdWLvvJoKICAgYGBgYmFzaAogICBnaXQgaW5pdCAmJiBnaXQgYWRkIC1BICYmIGdpdCBjb21taXQgLW0gImluaXQiCiAgIGdoIHJlcG8gY3JlYXRlIGFpLWdhbWUgLS1wdWJsaWMgLS1zb3VyY2U9LiAtLXB1c2gKICAgIyDmiJbmiYvliqjlnKggR2l0SHViIOW7uuepuuS7k+W6k+WQjiBnaXQgcmVtb3RlIGFkZCBvcmlnaW4gLi4uICYmIGdpdCBwdXNoCiAgIGBgYAoyLiDmiZPlvIAgdmVyY2VsLmNvbSDihpIgQWRkIE5ldyDihpIgUHJvamVjdCDihpIgSW1wb3J0IOivpeS7k+W6kwogICDvvIjmoYbmnrbkvJrooqvor4bliKvkuLogVml0Ze+8jOaehOW7uuWRveS7pC/ovpPlh7rnm67lvZXlt7LlnKggdmVyY2VsLmpzb24g5YaZ5aW977yJCjMuICoqRW52aXJvbm1lbnQgVmFyaWFibGVzKiog6aG16Z2i5re75Yqg77yaCiAgIC0gYE9QRU5BSV9BUElfS0VZYO+8iOW/heWhq++8iQogICAtIGBPUEVOQUlfQkFTRV9VUkxgIC8gYEdBTUVfTU9ERUxgIC8gYFNZU1RFTV9QUk9NUFRg77yI5Y+v6YCJ77yM5LiN6K6+6LWw6buY6K6k77yJCjQuIERlcGxveeOAguWHoOWNgeenkuWQjuW+l+WIsCBgaHR0cHM6Ly/kvaDnmoTpobnnm64udmVyY2VsLmFwcGAKCk5ldGxpZnkg5a+55bqU5pON5L2c77yaYXBwLm5ldGxpZnkuY29tIOKGkiBBZGQgbmV3IHNpdGUg4oaSIEltcG9ydCBmcm9tIEdpdO+8jArnjq/looPlj5jph4/lnKggU2l0ZSBzZXR0aW5ncyDihpIgRW52aXJvbm1lbnQgdmFyaWFibGVzIOmHjOWKoO+8jOWFtuS9meWFqOiHquWKqOOAggoKIyMg5o2i5qih5Z6L5Y6C5ZWGCgrlj6rmlLnnjq/looPlj5jph4/vvIzku6PnoIHpm7bmlLnliqjvvJoKCnwg5Y6C5ZWGIHwgT1BFTkFJX0JBU0VfVVJMIHwgR0FNRV9NT0RFTCDnpLrkvosgfAp8LS0tfC0tLXwtLS18CnwgRGVlcFNlZWvvvIjpu5jorqTvvIkgfCBgaHR0cHM6Ly9hcGkuZGVlcHNlZWsuY29tYCB8IGBkZWVwc2Vlay1jaGF0YCB8CnwgT3BlbkFJIHwgYGh0dHBzOi8vYXBpLm9wZW5haS5jb20vdjFgIHwgYGdwdC00by1taW5pYCB8Cnwg5pyI5LmL5pqX6Z2iIHwgYGh0dHBzOi8vYXBpLm1vb25zaG90LmNuL3YxYCB8IGBtb29uc2hvdC12MS04a2AgfAp8IOaZuuiwsSB8IGBodHRwczovL29wZW4uYmlnbW9kZWwuY24vYXBpL3BhYXMvdjRgIHwgYGdsbS00LWZsYXNoYCB8Cnwg6Zi/6YeM55m+54K8IHwgYGh0dHBzOi8vZGFzaHNjb3BlLmFsaXl1bmNzLmNvbS9jb21wYXRpYmxlLW1vZGUvdjFgIHwgYHF3ZW4tcGx1c2AgfAoKIyMg5byA5aeL5YaZ5L2g55qE5ri45oiPCgotIOeOqeazleaPkOekuuivje+8mmBTWVNURU1fUFJPTVBUYCDnjq/looPlj5jph4/vvIjmiJbmlLkgYHNlcnZlci9jaGF0LWNvcmUuanNgIOmHjOeahOm7mOiupOWAvO+8iQotIOa4uOaIjyBVSe+8mumHjeWGmSBgc3JjL0FwcC52dWVg77yMYHNlbmRNZXNzYWdlKClgIOeahOivt+axguWGmeazleWPr+ebtOaOpeeFp+aQrAotIOmcgOimgSLmuLjmiI/nirbmgIEi77yI6KGA6YeP44CB5YiG5pWw44CB5Zue5ZCI77yJ77ya6K6p5qih5Z6L5oyJ57qm5a6a5qC85byP6L+U5ZueIEpTT07vvIwKICDlnKggYGNoYXQtY29yZS5qc2Ag6YeM6Kej5p6Q5qCh6aqM5ZCO5YaN5Zue57uZ5YmN56uv4oCU4oCU5pyN5Yqh56uv6Kej5p6Q5Y+v5Lul6Ziy546p5a6256+h5pS5CgojIyDms6jmhI/kuovpobkKCi0g5YWs5byA55qE5ri45oiP6ZO+5o6l5Lya6KKr5Lq65Yi35o6l5Y+j77ya5LiK57q/5ZCO6Iez5bCR57uZIGAvYXBpL2NoYXRgIOWKoOavjyBJUCDpmZDmrKEKLSDlhY3otLnpop3luqbvvJpWZXJjZWwvTmV0bGlmeSDkuKrkurrniYjlnYcgMTAwR0Ig5rWB6YePL+aciO+8jOWHveaVsOiwg+eUqOmHj+i2s+Wkn+Wwj+a4uOaIj+eOqQotIOacrCBkZW1vIOS4uumdnua1geW8j+WbnuWkje+8m+imgeaJk+Wtl+acuuaViOaenOmcgOaKiuS7o+eQhuaUueaIkCBTU0Ug5rWB5byP6L2s5Y+R77yIUkVBRE1FIOS5i+WkluWGjeiBiu+8iQo=
+# ai-RPG —— AI 玩法内核小游戏脚手架
+
+Vite + Vue 3 前端，玩法内核通过云函数代理调用大模型（OpenAI 兼容格式，厂商可换）。
+一个仓库同时支持 **Vercel** 和 **Netlify** 部署，本地开发零配置。
+
+## 架构
+
+```
+浏览器 (Vue, 静态文件)
+   │  POST /api/chat  { messages: [...] }
+   ▼
+代理层（三处入口共享 server/chat-core.js 同一份逻辑）
+   ├─ 本地开发   dev-server.js        （npm run dev 自动起）
+   ├─ Vercel    api/chat.js
+   └─ Netlify   netlify/functions/chat.js（/api/chat 由 netlify.toml 重定向）
+   │  带 OPENAI_API_KEY 转发
+   ▼
+模型 API（默认 DeepSeek，改环境变量即换厂商）
+```
+
+**API Key 只存在于代理层的环境变量里，永远不会进前端代码。**
+
+## 本地开发
+
+```bash
+npm install
+cp .env.example .env    # 填入 OPENAI_API_KEY
+npm run dev             # 同时起前端(5173) + 本地API(8787)
+```
+
+打开 http://localhost:5173 ，在页面里发一句话，收到 AI 回复 = 全链路打通。
+
+## 部署（以 Vercel 为例，Netlify 同理）
+
+1. 把本目录推到 GitHub：
+   ```bash
+   git init && git add -A && git commit -m "init"
+   gh repo create ai-game --public --source=. --push
+   # 或手动在 GitHub 建空仓库后 git remote add origin ... && git push
+   ```
+2. 打开 vercel.com → Add New → Project → Import 该仓库
+   （框架会被识别为 Vite，构建命令/输出目录已在 vercel.json 写好）
+3. **Environment Variables** 页面添加：
+   - `OPENAI_API_KEY`（必填）
+   - `OPENAI_BASE_URL` / `GAME_MODEL` / `SYSTEM_PROMPT`（可选，不设走默认）
+4. Deploy。几十秒后得到 `https://你的项目.vercel.app`
+
+Netlify 对应操作：app.netlify.com → Add new site → Import from Git，
+环境变量在 Site settings → Environment variables 里加，其余全自动。
+
+## 换模型厂商
+
+只改环境变量，代码零改动：
+
+| 厂商 | OPENAI_BASE_URL | GAME_MODEL 示例 |
+|---|---|---|
+| DeepSeek（默认） | `https://api.deepseek.com` | `deepseek-chat` |
+| OpenAI | `https://api.openai.com/v1` | `gpt-4o-mini` |
+| 月之暗面 | `https://api.moonshot.cn/v1` | `moonshot-v1-8k` |
+| 智谱 | `https://open.bigmodel.cn/api/paas/v4` | `glm-4-flash` |
+| 阿里百炼 | `https://dashscope.aliyuncs.com/compatible-mode/v1` | `qwen-plus` |
+
+## 开始写你的游戏
+
+- 玩法提示词：`SYSTEM_PROMPT` 环境变量（或改 `server/chat-core.js` 里的默认值）
+- 游戏 UI：重写 `src/App.vue`，`sendMessage()` 的请求写法可直接照搬
+- 需要"游戏状态"（血量、分数、回合）：让模型按约定格式返回 JSON，
+  在 `chat-core.js` 里解析校验后再回给前端——服务端解析可以防玩家篡改
+
+## 注意事项
+
+- 公开的游戏链接会被人刷接口：上线后至少给 `/api/chat` 加每 IP 限次
+- 免费额度：Vercel/Netlify 个人版均 100GB 流量/月，函数调用量足够小游戏玩
+- 本 demo 为非流式回复；要打字机效果需把代理改成 SSE 流式转发（README 之外再聊）

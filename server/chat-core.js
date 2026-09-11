@@ -1,1 +1,79 @@
-LyoqCiAqIGNoYXQtY29yZS5qcyDigJTigJQg5ZSv5LiA55qE5LiA5Lu9Iuiwg+aooeWeiyLpgLvovpEKICoKICog5pys5ZywIGRldi1zZXJ2ZXIuanPjgIFWZXJjZWwg55qEIGFwaS9jaGF0Lmpz44CBTmV0bGlmeSDnmoQgZnVuY3Rpb25zL2NoYXQuanMKICog6YO96LCD55So6L+Z6YeM55qE5Ye95pWw44CC5pS55o+Q56S66K+N44CB5o2i5Y+C5pWw5Y+q6ZyA6KaB5Yqo6L+Z5LiA5Liq5paH5Lu244CCCiAqCiAqIOeOr+Wig+WPmOmHj++8iOacrOWcsOWGmSAuZW5277yM57q/5LiK5Zyo5bmz5Y+w5ZCO5Y+w5aGr77yJ77yaCiAqICAgT1BFTkFJX0FQSV9LRVkgICAg5b+F5aGr77yM5qih5Z6L5Y6C5ZWG55qEIEtleQogKiAgIE9QRU5BSV9CQVNFX1VSTCAgIOm7mOiupCBodHRwczovL2FwaS5kZWVwc2Vlay5jb20g77yIT3BlbkFJIOWumOaWueWhqyBodHRwczovL2FwaS5vcGVuYWkuY29tL3Yx77yJCiAqICAgR0FNRV9NT0RFTCAgICAgICAg6buY6K6kIGRlZXBzZWVrLWNoYXQKICogICBTWVNURU1fUFJPTVBUICAgICDmuLjmiI/kuLvmjIHkurrorr7lrprvvIzkuI3loavnlKjlhoXnva7pu5jorqQKICovCgpjb25zdCBERUZBVUxUX1NZU1RFTV9QUk9NUFQgPSBbCiAgJ+S9oOaYr+S4gOS4quaWh+Wtl+Wwj+a4uOaIj+eahOS4u+aMgeS6uuOAgueOqeWutumAmui/h+i+k+WFpeS4juS9oOS6pOS6kuaOqOi/m+a4uOaIj+OAgicsCiAgJ+avj+asoeWbnuWkjeS/neaMgeeugOefre+8iDE1MCDlrZfku6XlhoXvvInvvIzokKXpgKDmsJvlm7TvvIzlubblnKjnu5PlsL7nu5nnjqnlrrbnlZnlh7rooYzliqjnqbrpl7TjgIInLAogICfov5nlj6rmmK/pk77ot6/pqozor4HnlKjnmoTpu5jorqTorr7lrprvvIzor7fmjaLmiJDkvaDoh6rlt7HmuLjmiI/nmoTnjqnms5Xmj5DnpLror43jgIInLApdLmpvaW4oJ1xuJykKCmV4cG9ydCBjbGFzcyBBcGlFcnJvciBleHRlbmRzIEVycm9yIHsKICBjb25zdHJ1Y3RvcihtZXNzYWdlLCBzdGF0dXMgPSA1MDApIHsKICAgIHN1cGVyKG1lc3NhZ2UpCiAgICB0aGlzLnN0YXR1cyA9IHN0YXR1cwogIH0KfQoKLyoqCiAqIEBwYXJhbSB7QXJyYXk8e3JvbGU6IHN0cmluZywgY29udGVudDogc3RyaW5nfT59IG1lc3NhZ2VzIOWvueivneWOhuWPsu+8iOWQq+acgOaWsOS4gOadoeeOqeWutui+k+WFpe+8iQogKiBAcmV0dXJucyB7UHJvbWlzZTx7cmVwbHk6IHN0cmluZywgdXNhZ2U6IG9iamVjdHxudWxsfT59CiAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gY2hhdFdpdGhNb2RlbChtZXNzYWdlcykgewogIGNvbnN0IGFwaUtleSA9IHByb2Nlc3MuZW52Lk9QRU5BSV9BUElfS0VZCiAgaWYgKCFhcGlLZXkpIHsKICAgIHRocm93IG5ldyBBcGlFcnJvcigKICAgICAgJ09QRU5BSV9BUElfS0VZIOacquiuvue9ruOAguacrOWcsO+8muWkjeWItiAuZW52LmV4YW1wbGUg5Li6IC5lbnYg5bm25aGr5YWlIEtlee+8m+e6v+S4iu+8muWcqCBWZXJjZWwvTmV0bGlmeSDlkI7lj7AgRW52aXJvbm1lbnQgVmFyaWFibGVzIOmHjOa3u+WKoOOAgicsCiAgICAgIDUwMCwKICAgICkKICB9CiAgaWYgKCFBcnJheS5pc0FycmF5KG1lc3NhZ2VzKSB8fCBtZXNzYWdlcy5sZW5ndGggPT09IDApIHsKICAgIHRocm93IG5ldyBBcGlFcnJvcignbWVzc2FnZXMg5LiN6IO95Li656m6JywgNDAwKQogIH0KCiAgY29uc3QgYmFzZVVybCA9IChwcm9jZXNzLmVudi5PUEVOQUlfQkFTRV9VUkwgfHwgJ2h0dHBzOi8vYXBpLmRlZXBzZWVrLmNvbScpLnJlcGxhY2UoL1wvKyQvLCAnJykKICBjb25zdCBtb2RlbCA9IHByb2Nlc3MuZW52LkdBTUVfTU9ERUwgfHwgJ2RlZXBzZWVrLWNoYXQnCiAgY29uc3Qgc3lzdGVtUHJvbXB0ID0gcHJvY2Vzcy5lbnYuU1lTVEVNX1BST01QVCB8fCBERUZBVUxUX1NZU1RFTV9QUk9NUFQKCiAgY29uc3QgcGF5bG9hZCA9IHsKICAgIG1vZGVsLAogICAgbWVzc2FnZXM6IFt7IHJvbGU6ICdzeXN0ZW0nLCBjb250ZW50OiBzeXN0ZW1Qcm9tcHQgfSwgLi4ubWVzc2FnZXNdLAogICAgdGVtcGVyYXR1cmU6IDAuOSwKICAgIG1heF90b2tlbnM6IDUwMCwKICB9CgogIGxldCByZXMKICB0cnkgewogICAgcmVzID0gYXdhaXQgZmV0Y2goYCR7YmFzZVVybH0vY2hhdC9jb21wbGV0aW9uc2AsIHsKICAgICAgbWV0aG9kOiAnUE9TVCcsCiAgICAgIGhlYWRlcnM6IHsKICAgICAgICAnQ29udGVudC1UeXBlJzogJ2FwcGxpY2F0aW9uL2pzb24nLAogICAgICAgIEF1dGhvcml6YXRpb246IGBCZWFyZXIgJHthcGlLZXl9YCwKICAgICAgfSwKICAgICAgYm9keTogSlNPTi5zdHJpbmdpZnkocGF5bG9hZCksCiAgICB9KQogIH0gY2F0Y2ggKGUpIHsKICAgIHRocm93IG5ldyBBcGlFcnJvcihg5peg5rOV6L+e5o6l5qih5Z6L5pyN5Yqh77yIJHtiYXNlVXJsfe+8ie+8miR7ZS5tZXNzYWdlfWAsIDUwMikKICB9CgogIGlmICghcmVzLm9rKSB7CiAgICBjb25zdCB0ZXh0ID0gYXdhaXQgcmVzLnRleHQoKS5jYXRjaCgoKSA9PiAnJykKICAgIHRocm93IG5ldyBBcGlFcnJvcihg5qih5Z6L5pyN5Yqh6L+U5ZueICR7cmVzLnN0YXR1c33vvJoke3RleHQuc2xpY2UoMCwgMzAwKX1gLCByZXMuc3RhdHVzKQogIH0KCiAgY29uc3QgZGF0YSA9IGF3YWl0IHJlcy5qc29uKCkKICBjb25zdCByZXBseSA9IGRhdGE/LmNob2ljZXM/LlswXT8ubWVzc2FnZT8uY29udGVudAogIGlmICh0eXBlb2YgcmVwbHkgIT09ICdzdHJpbmcnKSB7CiAgICB0aHJvdyBuZXcgQXBpRXJyb3IoJ+aooeWei+i/lOWbnuagvOW8j+S4jeespuWQiCBPcGVuQUkg5YW85a656KeE6IyD77yM6K+35qOA5p+lIEJBU0VfVVJMIC8gR0FNRV9NT0RFTCcsIDUwMikKICB9CiAgcmV0dXJuIHsgcmVwbHksIHVzYWdlOiBkYXRhLnVzYWdlID8/IG51bGwgfQp9Cg==
+/**
+ * chat-core.js —— 唯一的一份"调模型"逻辑
+ *
+ * 本地 dev-server.js、Vercel 的 api/chat.js、Netlify 的 functions/chat.js
+ * 都调用这里的函数。改提示词、换参数只需要动这一个文件。
+ *
+ * 环境变量（本地写 .env，线上在平台后台填）：
+ *   OPENAI_API_KEY    必填，模型厂商的 Key
+ *   OPENAI_BASE_URL   默认 https://api.deepseek.com （OpenAI 官方填 https://api.openai.com/v1）
+ *   GAME_MODEL        默认 deepseek-chat
+ *   SYSTEM_PROMPT     游戏主持人设定，不填用内置默认
+ */
+
+const DEFAULT_SYSTEM_PROMPT = [
+  '你是一个文字小游戏的主持人。玩家通过输入与你交互推进游戏。',
+  '每次回复保持简短（150 字以内），营造氛围，并在结尾给玩家留出行动空间。',
+  '这只是链路验证用的默认设定，请换成你自己游戏的玩法提示词。',
+].join('\n')
+
+export class ApiError extends Error {
+  constructor(message, status = 500) {
+    super(message)
+    this.status = status
+  }
+}
+
+/**
+ * @param {Array<{role: string, content: string}>} messages 对话历史（含最新一条玩家输入）
+ * @returns {Promise<{reply: string, usage: object|null}>}
+ */
+export async function chatWithModel(messages) {
+  const apiKey = process.env.OPENAI_API_KEY
+  if (!apiKey) {
+    throw new ApiError(
+      'OPENAI_API_KEY 未设置。本地：复制 .env.example 为 .env 并填入 Key；线上：在 Vercel/Netlify 后台 Environment Variables 里添加。',
+      500,
+    )
+  }
+  if (!Array.isArray(messages) || messages.length === 0) {
+    throw new ApiError('messages 不能为空', 400)
+  }
+
+  const baseUrl = (process.env.OPENAI_BASE_URL || 'https://api.deepseek.com').replace(/\/+$/, '')
+  const model = process.env.GAME_MODEL || 'deepseek-chat'
+  const systemPrompt = process.env.SYSTEM_PROMPT || DEFAULT_SYSTEM_PROMPT
+
+  const payload = {
+    model,
+    messages: [{ role: 'system', content: systemPrompt }, ...messages],
+    temperature: 0.9,
+    max_tokens: 500,
+  }
+
+  let res
+  try {
+    res = await fetch(`${baseUrl}/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify(payload),
+    })
+  } catch (e) {
+    throw new ApiError(`无法连接模型服务（${baseUrl}）：${e.message}`, 502)
+  }
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => '')
+    throw new ApiError(`模型服务返回 ${res.status}：${text.slice(0, 300)}`, res.status)
+  }
+
+  const data = await res.json()
+  const reply = data?.choices?.[0]?.message?.content
+  if (typeof reply !== 'string') {
+    throw new ApiError('模型返回格式不符合 OpenAI 兼容规范，请检查 BASE_URL / GAME_MODEL', 502)
+  }
+  return { reply, usage: data.usage ?? null }
+}

@@ -1,1 +1,59 @@
-LyoqCiAqIGRldi1zZXJ2ZXIuanMg4oCU4oCUIOacrOWcsOW8gOWPkeaXtuaooeaLn+e6v+S4iuS6keWHveaVsAogKiDnm5HlkKwgODc4N++8jOaPkOS+myBQT1NUIC9hcGkvY2hhdO+8iFZpdGUg5Lya5oqK5YmN56uv55qEIC9hcGkg6K+35rGC6L2s5Y+R6L+H5p2l77yJCiAqIOeUsSBkZXYuanMg6Ieq5Yqo5bimIC0tZW52LWZpbGUg5ZCv5Yqo77yM5LiA6Iis5LiN6ZyA6KaB5Y2V54us6L+Q6KGM44CCCiAqLwppbXBvcnQgeyBjcmVhdGVTZXJ2ZXIgfSBmcm9tICdub2RlOmh0dHAnCmltcG9ydCB7IGNoYXRXaXRoTW9kZWwsIEFwaUVycm9yIH0gZnJvbSAnLi9zZXJ2ZXIvY2hhdC1jb3JlLmpzJwoKY29uc3QgUE9SVCA9IHByb2Nlc3MuZW52LlBPUlQgfHwgODc4NwoKZnVuY3Rpb24gcmVhZEJvZHkocmVxKSB7CiAgcmV0dXJuIG5ldyBQcm9taXNlKChyZXNvbHZlLCByZWplY3QpID0+IHsKICAgIGxldCBidWYgPSAnJwogICAgcmVxLm9uKCdkYXRhJywgKGMpID0+IHsKICAgICAgYnVmICs9IGMKICAgICAgaWYgKGJ1Zi5sZW5ndGggPiAxZTYpIHsKICAgICAgICByZWplY3QobmV3IEFwaUVycm9yKCfor7fmsYLkvZPov4flpKcnLCA0MTMpKQogICAgICAgIHJlcS5kZXN0cm95KCkKICAgICAgfQogICAgfSkKICAgIHJlcS5vbignZW5kJywgKCkgPT4gewogICAgICB0cnkgewogICAgICAgIHJlc29sdmUoYnVmID8gSlNPTi5wYXJzZShidWYpIDoge30pCiAgICAgIH0gY2F0Y2ggewogICAgICAgIHJlamVjdChuZXcgQXBpRXJyb3IoJ+ivt+axguS9k+S4jeaYr+WQiOazlSBKU09OJywgNDAwKSkKICAgICAgfQogICAgfSkKICAgIHJlcS5vbignZXJyb3InLCByZWplY3QpCiAgfSkKfQoKY29uc3Qgc2VydmVyID0gY3JlYXRlU2VydmVyKGFzeW5jIChyZXEsIHJlcykgPT4gewogIHJlcy5zZXRIZWFkZXIoJ0NvbnRlbnQtVHlwZScsICdhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04JykKCiAgaWYgKHJlcS5tZXRob2QgPT09ICdHRVQnICYmIHJlcS51cmwgPT09ICcvYXBpL2hlYWx0aCcpIHsKICAgIHJlcy5lbmQoSlNPTi5zdHJpbmdpZnkoeyBvazogdHJ1ZSwga2V5Q29uZmlndXJlZDogQm9vbGVhbihwcm9jZXNzLmVudi5PUEVOQUlfQVBJX0tFWSkgfSkpCiAgICByZXR1cm4KICB9CgogIGlmIChyZXEubWV0aG9kID09PSAnUE9TVCcgJiYgcmVxLnVybCA9PT0gJy9hcGkvY2hhdCcpIHsKICAgIHRyeSB7CiAgICAgIGNvbnN0IHsgbWVzc2FnZXMgfSA9IGF3YWl0IHJlYWRCb2R5KHJlcSkKICAgICAgY29uc3QgcmVzdWx0ID0gYXdhaXQgY2hhdFdpdGhNb2RlbChtZXNzYWdlcykKICAgICAgcmVzLmVuZChKU09OLnN0cmluZ2lmeShyZXN1bHQpKQogICAgfSBjYXRjaCAoZSkgewogICAgICBjb25zdCBzdGF0dXMgPSBlIGluc3RhbmNlb2YgQXBpRXJyb3IgPyBlLnN0YXR1cyA6IDUwMAogICAgICByZXMud3JpdGVIZWFkKHN0YXR1cykKICAgICAgcmVzLmVuZChKU09OLnN0cmluZ2lmeSh7IGVycm9yOiBlLm1lc3NhZ2UgfHwgJ+acquefpemUmeivrycgfSkpCiAgICB9CiAgICByZXR1cm4KICB9CgogIHJlcy53cml0ZUhlYWQoNDA0KQogIHJlcy5lbmQoSlNPTi5zdHJpbmdpZnkoeyBlcnJvcjogJ05vdCBGb3VuZCcgfSkpCn0pCgpzZXJ2ZXIubGlzdGVuKFBPUlQsICgpID0+IHsKICBjb25zb2xlLmxvZyhgW2Rldi1hcGldIGh0dHA6Ly9sb2NhbGhvc3Q6JHtQT1JUfS9hcGkvY2hhdCAgKOaooeWeizogJHtwcm9jZXNzLmVudi5HQU1FX01PREVMIHx8ICdkZWVwc2Vlay1jaGF0J30pYCkKfSkK
+/**
+ * dev-server.js —— 本地开发时模拟线上云函数
+ * 监听 8787，提供 POST /api/chat（Vite 会把前端的 /api 请求转发过来）
+ * 由 dev.js 自动带 --env-file 启动，一般不需要单独运行。
+ */
+import { createServer } from 'node:http'
+import { chatWithModel, ApiError } from './server/chat-core.js'
+
+const PORT = process.env.PORT || 8787
+
+function readBody(req) {
+  return new Promise((resolve, reject) => {
+    let buf = ''
+    req.on('data', (c) => {
+      buf += c
+      if (buf.length > 1e6) {
+        reject(new ApiError('请求体过大', 413))
+        req.destroy()
+      }
+    })
+    req.on('end', () => {
+      try {
+        resolve(buf ? JSON.parse(buf) : {})
+      } catch {
+        reject(new ApiError('请求体不是合法 JSON', 400))
+      }
+    })
+    req.on('error', reject)
+  })
+}
+
+const server = createServer(async (req, res) => {
+  res.setHeader('Content-Type', 'application/json; charset=utf-8')
+
+  if (req.method === 'GET' && req.url === '/api/health') {
+    res.end(JSON.stringify({ ok: true, keyConfigured: Boolean(process.env.OPENAI_API_KEY) }))
+    return
+  }
+
+  if (req.method === 'POST' && req.url === '/api/chat') {
+    try {
+      const { messages } = await readBody(req)
+      const result = await chatWithModel(messages)
+      res.end(JSON.stringify(result))
+    } catch (e) {
+      const status = e instanceof ApiError ? e.status : 500
+      res.writeHead(status)
+      res.end(JSON.stringify({ error: e.message || '未知错误' }))
+    }
+    return
+  }
+
+  res.writeHead(404)
+  res.end(JSON.stringify({ error: 'Not Found' }))
+})
+
+server.listen(PORT, () => {
+  console.log(`[dev-api] http://localhost:${PORT}/api/chat  (模型: ${process.env.GAME_MODEL || 'deepseek-chat'})`)
+})

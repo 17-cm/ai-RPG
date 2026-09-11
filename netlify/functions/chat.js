@@ -1,1 +1,26 @@
-LyoqCiAqIE5ldGxpZnkgRnVuY3Rpb24g5YWl5Y+jCiAqIOmDqOe9suWQjuiHquWKqOaatOmcsuS4uiBQT1NUIC8ubmV0bGlmeS9mdW5jdGlvbnMvY2hhdAogKiDliY3nq6/nu5/kuIDor7fmsYIgL2FwaS9jaGF077yM55SxIG5ldGxpZnkudG9tbCDph4znmoQgcmVkaXJlY3Qg6KeE5YiZ5pig5bCE6L+H5p2l44CCCiAqLwppbXBvcnQgeyBjaGF0V2l0aE1vZGVsLCBBcGlFcnJvciB9IGZyb20gJy4uLy4uL3NlcnZlci9jaGF0LWNvcmUuanMnCgpleHBvcnQgYXN5bmMgZnVuY3Rpb24gaGFuZGxlcihldmVudCkgewogIGNvbnN0IGpzb24gPSAoc3RhdHVzQ29kZSwgYm9keSkgPT4gKHsKICAgIHN0YXR1c0NvZGUsCiAgICBoZWFkZXJzOiB7ICdDb250ZW50LVR5cGUnOiAnYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcgfSwKICAgIGJvZHk6IEpTT04uc3RyaW5naWZ5KGJvZHkpLAogIH0pCgogIGlmIChldmVudC5odHRwTWV0aG9kICE9PSAnUE9TVCcpIHsKICAgIHJldHVybiBqc29uKDQwNSwgeyBlcnJvcjogJ+S7heaUr+aMgSBQT1NUJyB9KQogIH0KICB0cnkgewogICAgY29uc3QgcGFyc2VkID0gZXZlbnQuYm9keSA/IEpTT04ucGFyc2UoZXZlbnQuYm9keSkgOiB7fQogICAgY29uc3QgcmVzdWx0ID0gYXdhaXQgY2hhdFdpdGhNb2RlbChwYXJzZWQubWVzc2FnZXMpCiAgICByZXR1cm4ganNvbigyMDAsIHJlc3VsdCkKICB9IGNhdGNoIChlKSB7CiAgICBjb25zdCBzdGF0dXMgPSBlIGluc3RhbmNlb2YgQXBpRXJyb3IgPyBlLnN0YXR1cyA6IDUwMAogICAgcmV0dXJuIGpzb24oc3RhdHVzLCB7IGVycm9yOiBlLm1lc3NhZ2UgfHwgJ+acquefpemUmeivrycgfSkKICB9Cn0K
+/**
+ * Netlify Function 入口
+ * 部署后自动暴露为 POST /.netlify/functions/chat
+ * 前端统一请求 /api/chat，由 netlify.toml 里的 redirect 规则映射过来。
+ */
+import { chatWithModel, ApiError } from '../../server/chat-core.js'
+
+export async function handler(event) {
+  const json = (statusCode, body) => ({
+    statusCode,
+    headers: { 'Content-Type': 'application/json; charset=utf-8' },
+    body: JSON.stringify(body),
+  })
+
+  if (event.httpMethod !== 'POST') {
+    return json(405, { error: '仅支持 POST' })
+  }
+  try {
+    const parsed = event.body ? JSON.parse(event.body) : {}
+    const result = await chatWithModel(parsed.messages)
+    return json(200, result)
+  } catch (e) {
+    const status = e instanceof ApiError ? e.status : 500
+    return json(status, { error: e.message || '未知错误' })
+  }
+}

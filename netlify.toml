@@ -1,1 +1,11 @@
-W2J1aWxkXQogIGNvbW1hbmQgPSAibnBtIHJ1biBidWlsZCIKICBwdWJsaXNoID0gImRpc3QiCiAgZnVuY3Rpb25zID0gIm5ldGxpZnkvZnVuY3Rpb25zIgoKIyDorqnliY3nq6/lj6/ku6Xnu5/kuIDlj6ror7fmsYIgL2FwaS9jaGF077yM5bGP6JS95Lik5a625bmz5Y+w55qE5Ye95pWw6Lev5b6E5beu5byCCltbcmVkaXJlY3RzXV0KICBmcm9tID0gIi9hcGkvY2hhdCIKICB0byA9ICIvLm5ldGxpZnkvZnVuY3Rpb25zL2NoYXQiCiAgc3RhdHVzID0gMjAwCiAgZm9yY2UgPSB0cnVlCg==
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+# 让前端可以统一只请求 /api/chat，屏蔽两家平台的函数路径差异
+[[redirects]]
+  from = "/api/chat"
+  to = "/.netlify/functions/chat"
+  status = 200
+  force = true

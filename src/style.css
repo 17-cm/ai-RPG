@@ -1,1 +1,31 @@
-Lyog5rex6Imy5ri45oiP6aOO5Z+656GA5qC35byP77yM6ZqP5L6/5pS5ICovCjpyb290IHsKICBjb2xvci1zY2hlbWU6IGRhcms7CiAgLS1iZzogIzEwMTQxYzsKICAtLXBhbmVsOiAjMWEyMTMwOwogIC0tdGV4dDogI2U2ZTlmMDsKICAtLWRpbTogIzhiOTRhNzsKICAtLWFjY2VudDogIzRmOGNmZjsKICAtLXVzZXI6ICMyYTM1NTA7CiAgLS1haTogIzFmMjkzNzsKfQoKKiB7CiAgYm94LXNpemluZzogYm9yZGVyLWJveDsKfQoKYm9keSB7CiAgbWFyZ2luOiAwOwogIGJhY2tncm91bmQ6IHZhcigtLWJnKTsKICBjb2xvcjogdmFyKC0tdGV4dCk7CiAgZm9udC1mYW1pbHk6IHN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgJ1BpbmdGYW5nIFNDJywgJ01pY3Jvc29mdCBZYUhlaScsIHNhbnMtc2VyaWY7Cn0KCiNhcHAgewogIG1heC13aWR0aDogNjgwcHg7CiAgbWFyZ2luOiAwIGF1dG87CiAgcGFkZGluZzogMTZweDsKICBtaW4taGVpZ2h0OiAxMDBkdmg7CiAgZGlzcGxheTogZmxleDsKICBmbGV4LWRpcmVjdGlvbjogY29sdW1uOwp9Cg==
+/* 深色游戏风基础样式，随便改 */
+:root {
+  color-scheme: dark;
+  --bg: #10141c;
+  --panel: #1a2130;
+  --text: #e6e9f0;
+  --dim: #8b94a7;
+  --accent: #4f8cff;
+  --user: #2a3550;
+  --ai: #1f2937;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+#app {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 16px;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
